@@ -6,11 +6,14 @@ HabitFX
 Intention
 ---
 
-TODO Intention
+`HabitFX` is a learn software which allowed the user to strengthen or weaken his 
+habits.
+
+HabitFX is a [JavaFX] &amp; [Maven] application, written in [NetBeans IDE].
 
 TODO One Screenshoot
 
-Current `version` is `0.1.0` (07.dd.2017 / MM.dd.yyyy).
+_Currently HabitFX is still in development, no release is available._
 
 
 Content
@@ -91,6 +94,9 @@ You can reach me under <peter.rogge@yahoo.de>.
 [//]: # (Links)
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
 [Issue]:https://github.com/Naoghuman/HabitFX/issues
+[JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+[Maven]:http://maven.apache.org/
+[NetBeans IDE]:https://netbeans.org/
 [Pull Request]:https://help.github.com/articles/using-pull-requests
