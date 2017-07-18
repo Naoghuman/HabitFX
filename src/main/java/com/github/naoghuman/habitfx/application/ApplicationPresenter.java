@@ -24,9 +24,9 @@ import com.github.naoghuman.habitfx.view.habitnavigation.HabitNavigationPresente
 import com.github.naoghuman.habitfx.view.habitnavigation.HabitNavigationView;
 import com.github.naoghuman.habitfx.view.habitoverview.HabitOverviewPresenter;
 import com.github.naoghuman.habitfx.view.habitoverview.HabitOverviewView;
-import com.github.naoghuman.lib.action.api.ActionFacade;
-import com.github.naoghuman.lib.action.api.IRegisterActions;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
+import com.github.naoghuman.lib.action.core.RegisterActions;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -43,7 +43,7 @@ import javafx.util.Callback;
  *
  * @author Naoghuman
  */
-public class ApplicationPresenter implements Initializable, IActionConfiguration, IRegisterActions {
+public class ApplicationPresenter implements Initializable, IActionConfiguration, RegisterActions {
     
     @FXML private BorderPane bpHabit;
     @FXML private ListView<Habit> lvHabits;
@@ -56,9 +56,9 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
         
         this.initializeListView();
 
-        this.registerActions();
+        this.register();
         
-        ActionFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
+        ActionHandlerFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
     }
     
     public void initializeAfterWindowIsShowing() {
@@ -142,8 +142,8 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
     }
     
     @Override
-    public void registerActions() {
-        LoggerFacade.getDefault().debug(this.getClass(), "Register actions in ApplicationPresenter"); // NOI18N
+    public void register() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register in ApplicationPresenter"); // NOI18N
         
         this.registerOnActionRefreshNavigation();
     }
@@ -151,7 +151,7 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
     private void registerOnActionRefreshNavigation() {
         LoggerFacade.getDefault().debug(this.getClass(), "Register on action refresh [Navigation]"); // NOI18N
         
-        ActionFacade.getDefault().register(
+        ActionHandlerFacade.getDefault().register(
                 ON_ACTION__REFRESH_NAVIGATION,
                 (ActionEvent event) -> {
                     this.onActionRefreshNavigation();

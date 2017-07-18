@@ -21,8 +21,8 @@ import com.github.naoghuman.habitfx.dialog.habitwizard.HabitWizardPresenter;
 import com.github.naoghuman.habitfx.dialog.habitwizard.HabitWizardView;
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.sql.SqlProvider;
-import com.github.naoghuman.lib.action.api.ActionFacade;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.util.Optional;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -72,7 +72,7 @@ public final class DialogProvider implements IActionConfiguration {
                         SqlProvider.getDefault().createHabit(habit);
                         SqlProvider.getDefault().createHabitDates(habit);
                         
-                        ActionFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
+                        ActionHandlerFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
                     }
                 });
     }

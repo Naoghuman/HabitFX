@@ -18,7 +18,7 @@ package com.github.naoghuman.habitfx.sql;
 
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.entities.HabitDate;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.util.Optional;
 import javafx.collections.ObservableList;
 import org.apache.commons.lang3.time.StopWatch;

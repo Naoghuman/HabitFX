@@ -20,8 +20,8 @@ import static com.github.naoghuman.habitfx.configuration.IActionConfiguration.ON
 import com.github.naoghuman.habitfx.entities.HabitDate;
 import com.github.naoghuman.habitfx.entities.HabitDateState;
 import com.github.naoghuman.habitfx.sql.SqlProvider;
-import com.github.naoghuman.lib.action.api.ActionFacade;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -152,8 +152,8 @@ public class HabitDatePresenter implements Initializable {
         SqlProvider.getDefault().updateHabit(habitDate);
         
         // Refresh gui
-        ActionFacade.getDefault().handle(dynamicActionId);
-        ActionFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
+        ActionHandlerFacade.getDefault().handle(dynamicActionId);
+        ActionHandlerFacade.getDefault().handle(ON_ACTION__REFRESH_NAVIGATION);
     }
     
 }

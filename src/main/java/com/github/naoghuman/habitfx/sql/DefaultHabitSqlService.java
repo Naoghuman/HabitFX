@@ -20,7 +20,7 @@ import com.github.naoghuman.habitfx.configuration.IModelConfiguration;
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.entities.HabitDate;
 import com.github.naoghuman.habitfx.entities.HabitDateState;
-import com.github.naoghuman.lib.database.api.DatabaseFacade;
+import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;

@@ -19,7 +19,7 @@ package com.github.naoghuman.habitfx.sql;
 import com.github.naoghuman.habitfx.configuration.IModelConfiguration;
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.entities.HabitDate;
-import com.github.naoghuman.lib.database.api.DatabaseFacade;
+import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Collections;

@@ -20,7 +20,7 @@ import com.github.naoghuman.habitfx.configuration.IActionConfiguration;
 import com.github.naoghuman.habitfx.configuration.IPropertiesConfiguration;
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.entities.HabitState;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
