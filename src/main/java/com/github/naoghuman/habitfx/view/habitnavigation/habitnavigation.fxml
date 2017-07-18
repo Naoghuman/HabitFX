@@ -14,12 +14,13 @@
                 <HBox spacing="7.0">
                    <children>
                           <Label fx:id="lTitle" maxWidth="1.7976931348623157E308" text="&lt;title&gt;" HBox.hgrow="ALWAYS" />
-                      <Label fx:id="lDatesLeft" text="&lt;left&gt;" />
+                      <Label fx:id="lCurrentHabitCounters" text="&lt;current-h-counters&gt;" />
                    </children>
                 </HBox>
                 <HBox spacing="7.0">
                    <children>
                           <Label fx:id="lStartDate" text="&lt;start-date&gt;" />
+                  <Label text="-" />
                       <Label fx:id="lEndDate" text="&lt;end-date&gt;" HBox.hgrow="ALWAYS" />
                    </children>
                 </HBox>

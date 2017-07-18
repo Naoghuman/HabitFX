@@ -18,13 +18,14 @@ package com.github.naoghuman.habitfx.view.habitnavigation;
 
 import com.github.naoghuman.habitfx.entities.Habit;
 import com.github.naoghuman.habitfx.entities.HabitState;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -43,8 +44,8 @@ public class HabitNavigationPresenter implements Initializable {
     
     @FXML private HBox hbNavigationElement;
     @FXML private Label lCurrentDateState;
+    @FXML private Label lCurrentHabitCounters;
     @FXML private Label lEndDate;
-    @FXML private Label lDatesLeft;
     @FXML private Label lHabitState;
     @FXML private Label lStartDate;
     @FXML private Label lTitle;
@@ -102,12 +103,23 @@ public class HabitNavigationPresenter implements Initializable {
     private void configureInfoData() {
         LoggerFacade.getDefault().debug(this.getClass(), "Configure [Info] data"); // NOI18N
         
-        lTitle     .setText(habit.getTitle());
-        lDatesLeft .setText(String.format("%s left", habit.getCounterNotStarted()));
-        lStartDate .setText(String.format("Start: %s", habit.getStartDate())); // NOI18N
-        lEndDate   .setText(String.format("End: %s",   habit.getEndDate())); // NOI18N
+        lTitle.setText(habit.getTitle());
+        lTitle.setTooltip(new Tooltip("title"));// NOI18N
+        
+        lCurrentHabitCounters.setText(String.format("(%s, %s, %s)", habit.getCounterDone(), habit.getCounterNotStarted(), habit.getCounterFailed()));
+        lCurrentHabitCounters.setTooltip(new Tooltip("(done, not started, failed)"));// NOI18N
+        
+        lStartDate.setText(String.format("%s", habit.getStartDate())); // NOI18N
+        lStartDate.setTooltip(new Tooltip("startdate"));// NOI18N
+        
+        lEndDate.setText(String.format("%s", habit.getEndDate())); // NOI18N
+        lEndDate.setTooltip(new Tooltip("enddate"));// NOI18N
+        
         lHabitState.setText(habit.getState().name());
+        lHabitState.setTooltip(new Tooltip("habit-state"));// NOI18N
+        
         lCurrentDateState.setText("TODO");
+        lCurrentDateState.setTooltip(new Tooltip("todo"));// NOI18N
     }
     
 }
