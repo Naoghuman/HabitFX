@@ -9,7 +9,7 @@ Intention
 `HabitFX` is a learn software which allowed the user to strengthen or weaken his 
 habits.
 
-HabitFX is a [JavaFX] &amp; [Maven] application, written in [NetBeans IDE].
+HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.
 
 TODO One Screenshoot
 
