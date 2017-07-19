@@ -23,9 +23,9 @@ import com.github.naoghuman.habitfx.entities.HabitDateState;
 import com.github.naoghuman.habitfx.sql.SqlProvider;
 import com.github.naoghuman.habitfx.view.habitdate.HabitDatePresenter;
 import com.github.naoghuman.habitfx.view.habitdate.HabitDateView;
-import com.github.naoghuman.lib.action.api.ActionFacade;
-import com.github.naoghuman.lib.action.api.IRegisterActions;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
+import com.github.naoghuman.lib.action.core.RegisterActions;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -40,7 +40,7 @@ import javafx.scene.layout.VBox;
  *
  * @author Naoghuman
  */
-public class HabitOverviewPresenter implements Initializable, IRegisterActions {
+public class HabitOverviewPresenter implements Initializable, RegisterActions {
 
     @FXML private Label lCounterDone;
     @FXML private Label lCounterFailed;
@@ -68,7 +68,7 @@ public class HabitOverviewPresenter implements Initializable, IRegisterActions {
         
         dynamicActionId = dynamicActionId + habit.getId();
         
-        this.registerActions();
+        this.register();
         
         final boolean refreshHabit = Boolean.FALSE;
         this.onActionRefreshHabitDates(refreshHabit);
@@ -133,8 +133,8 @@ public class HabitOverviewPresenter implements Initializable, IRegisterActions {
     }
 
     @Override
-    public void registerActions() {
-        LoggerFacade.getDefault().debug(this.getClass(), "Register actions"); // NOI18N
+    public void register() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register"); // NOI18N
         
         this.registerOnActionRefreshHabitDates();
     }
@@ -143,7 +143,7 @@ public class HabitOverviewPresenter implements Initializable, IRegisterActions {
         LoggerFacade.getDefault().debug(this.getClass(), "Register on action refresh [HabitDate]s"); // NOI18N
         
         // TODO should be removed if the view is removed from BorderPane
-        ActionFacade.getDefault()
+        ActionHandlerFacade.getDefault()
                 .register(
                         dynamicActionId,
                         (ActionEvent event) -> {
