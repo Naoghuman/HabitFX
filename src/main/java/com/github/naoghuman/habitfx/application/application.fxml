@@ -27,7 +27,7 @@
                         </ToolBar>
                         <ToolBar minHeight="-Infinity" prefHeight="40.0">
                           <items>
-                            <Button mnemonicParsing="false" onAction="#onActionEditHabit" text="..." />
+                            <Button disable="true" mnemonicParsing="false" onAction="#onActionEditHabit" text="..." />
                           </items>
                         </ToolBar>
                      </children>
@@ -54,7 +54,7 @@
                <children>
                   <ToolBar minHeight="-Infinity" prefHeight="40.0">
                     <items>
-                      <Button mnemonicParsing="false" text="Button" />
+                      <Button disable="true" mnemonicParsing="false" text="Edit" />
                     </items>
                   </ToolBar>
                   <BorderPane fx:id="bpHabit" VBox.vgrow="ALWAYS" />
