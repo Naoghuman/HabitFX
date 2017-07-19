@@ -14,7 +14,7 @@
                 <HBox spacing="7.0">
                    <children>
                           <Label fx:id="lTitle" maxWidth="1.7976931348623157E308" text="&lt;title&gt;" HBox.hgrow="ALWAYS" />
-                      <Label fx:id="lCurrentHabitCounters" text="&lt;current-h-counters&gt;" />
+                      <Label fx:id="lCurrentHabitCounters" minWidth="-Infinity" text="&lt;current-h-counters&gt;" />
                    </children>
                 </HBox>
                 <HBox spacing="7.0">
