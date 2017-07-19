@@ -93,7 +93,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         }
         
         // Show Habit title
-        lHabitTitle.setText(habit.getTitle());
+        lHabitTitle.setText("Title: " + habit.getTitle()); // NOI18N
         
         // Show info in Counters
         lCounterDone      .setText(String.format("Done: %d",        habit.getCounterDone()));       // NOI18N
