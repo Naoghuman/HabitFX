@@ -17,9 +17,14 @@
 package com.github.naoghuman.habitfx.view.habitnavigation;
 
 import com.github.naoghuman.habitfx.entities.Habit;
+import com.github.naoghuman.habitfx.entities.HabitDate;
 import com.github.naoghuman.habitfx.entities.HabitState;
+import com.github.naoghuman.habitfx.sql.SqlProvider;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -118,8 +123,10 @@ public class HabitNavigationPresenter implements Initializable {
         lHabitState.setText(habit.getState().name());
         lHabitState.setTooltip(new Tooltip("habit-state"));// NOI18N
         
-        lCurrentDateState.setText("TODO");
-        lCurrentDateState.setTooltip(new Tooltip("todo"));// NOI18N
+        final String habitDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
+        final Optional<HabitDate> result = SqlProvider.getDefault().findHabitDate(habit.getId(), habitDate);
+        lCurrentDateState.setText(result.isPresent() ? result.get().getState().name() : "---");
+        lCurrentDateState.setTooltip(result.isPresent() ? new Tooltip("current habitdate-state") : null);// NOI18N
     }
     
 }
