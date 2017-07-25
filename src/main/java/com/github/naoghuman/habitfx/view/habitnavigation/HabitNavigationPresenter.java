@@ -92,7 +92,7 @@ public class HabitNavigationPresenter implements Initializable {
         final BackgroundFill bfComponent = new BackgroundFill(lgComponent, CornerRadii.EMPTY, Insets.EMPTY);
         final Background bComponent = new Background(bfComponent);
         
-        hbNavigationElement.setBackground(bComponent);
+//        hbNavigationElement.setBackground(bComponent);
         
         // Create the new color for the color bar
         final Stop[] sColorBar = new Stop[] { 
