@@ -85,12 +85,12 @@ public class HabitNavigationPresenter implements Initializable {
             backgroundColor = Color.LIGHTCORAL;
         }
         // Create the new color for the hole component
-        final Stop[] sComponent = new Stop[] { 
-            new Stop(0, backgroundColor), 
-            new Stop(1, backgroundColor.darker())};
-        final LinearGradient lgComponent = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, sComponent);
-        final BackgroundFill bfComponent = new BackgroundFill(lgComponent, CornerRadii.EMPTY, Insets.EMPTY);
-        final Background bComponent = new Background(bfComponent);
+//        final Stop[] sComponent = new Stop[] { 
+//            new Stop(0, backgroundColor), 
+//            new Stop(1, backgroundColor.darker())};
+//        final LinearGradient lgComponent = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, sComponent);
+//        final BackgroundFill bfComponent = new BackgroundFill(lgComponent, CornerRadii.EMPTY, Insets.EMPTY);
+//        final Background bComponent = new Background(bfComponent);
         
 //        hbNavigationElement.setBackground(bComponent);
         
