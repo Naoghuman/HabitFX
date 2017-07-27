@@ -6,14 +6,14 @@ HabitFX
 Intention
 ---
 
-`HabitFX` is a learn software which allowed the user to strengthen or weaken his 
-habits.
+`HabitFX` is a learning software which allowed the user to strengthen or weaken 
+his habits.
 
-HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.
+Written with [NetBeans IDE] `HabitFX is a [JavaFX] &amp; [Maven] application.
 
 TODO One Screenshoot
 
-_Currently HabitFX is still in development, no release is available._
+Current `version` is `X.Y.Z-PRERELEASE` (MM.dd.2017 / MM.dd.yyyy)
 
 
 Content
@@ -40,21 +40,32 @@ TODO Screenshoots, habits with different state, habitoverview
 Download<a name="Download" />
 ---
 
-TODO
+Current `version` is `X.Y.Z`. Main points from this release are:
+* TODO
+
+Download:
+* [Release vX.Y.Z (MM.dd.2017 / MM.dd.yyyy)]
+
+An overview about all existings releases can be found here:
+* [Overview from all releases in HabitFX]
 
 
 
 Requirements<a name="Requirements" />
 ---
 
-* On your system you need [JDK 8] or [JRE 8] installed.
+* On your system you need the [JDK 8] or the [JRE 8] installed.
 
 
 
 Installation<a name="Installation" />
 ---
 
-TODO
+* Download the newest installation file (something like habitfx_vX.Y.Z.zip).
+* Unpack the zip-file to a folder of your choose.
+* To start the application doubleclick in the folder the habitfx_vX.Y.Z.jar file.
+
+TODO add screenshoot unpacked zip-file
 
 
 
@@ -99,4 +110,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Maven]:http://maven.apache.org/
 [NetBeans IDE]:https://netbeans.org/
+[Overview from all releases in HabitFX]:https://github.com/Naoghuman/HabitFX/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
+[Release vX.Y.Z (MM.dd.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/HabitFX/releases/tag/v0.1.0-prerelease
