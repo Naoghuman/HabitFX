@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.naoghuman</groupId>
     <artifactId>habitfx</artifactId>
-    <version>0.1.0-SNAPSHOT</version> <!-- -SNAPSHOT -PRERELEASE -->
+    <version>0.1.0-PRERELEASE</version> <!-- -SNAPSHOT -PRERELEASE -->
     <packaging>jar</packaging>
     <name>HabitFX</name>
-    <description>`HabitFX` is a learn software which allowed the user to strengthen or weaken his habits.
+    <description>`HabitFX` is a learning software which allowed the user to strengthen or weaken his habits.
 
 HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</description>
     
@@ -99,7 +99,7 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-properties</artifactId>
-            <version>0.4.1</version>
+            <version>0.5.0</version>
             <type>jar</type>
         </dependency>
         
@@ -128,8 +128,6 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
             <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
-        
     </dependencies>
-    
-    
+     
 </project>

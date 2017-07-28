@@ -14,7 +14,7 @@ Written with [NetBeans IDE] `HabitFX` is a [JavaFX] &amp; [Maven] application.
 _Image:_ `HabitFX v0.1.0-SNAPSHOT`  
 ![HabitFX_v0.1.0-SNAPSHOT_2017-07-28_11-22.png][HabitFX_v0.1.0-SNAPSHOT_2017-07-28_11-22]
 
-Current `version` is `X.Y.Z-PRERELEASE` (MM.dd.2017 / MM.dd.yyyy)
+Current `version` is `0.1.0-PRERELEASE` (07.28.2017 / MM.dd.yyyy)
 
 
 
@@ -42,11 +42,11 @@ TODO
 Download<a name="Download" />
 ---
 
-Current `version` is `X.Y.Z`. Main points from this release are:
-* TODO
+Current `version` is `0.1.0-PRERELEASE`. Main points from this release are:
+* First release from `HabitFX`. It's in a really early state.
 
 Download:
-* [Release vX.Y.Z (MM.dd.2017 / MM.dd.yyyy)]
+* [Release v0.1.0-PRERELEASE (07.28.2017 / MM.dd.yyyy)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in HabitFX]
@@ -115,4 +115,4 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans IDE]:https://netbeans.org/
 [Overview from all releases in HabitFX]:https://github.com/Naoghuman/HabitFX/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release vX.Y.Z (MM.dd.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/HabitFX/releases/tag/v0.1.0-prerelease
+[Release v0.1.0-PRERELEASE (07.28.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/HabitFX/releases/tag/v0.1.0-prerelease
