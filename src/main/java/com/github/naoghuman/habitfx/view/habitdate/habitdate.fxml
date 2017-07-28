@@ -4,23 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
 
-<HBox id="VBox" fx:id="hbHabitDateView" maxHeight="-Infinity" minHeight="-Infinity" minWidth="175.0" prefHeight="96.0" prefWidth="300.0" spacing="7.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.naoghuman.habitfx.view.habitdate.HabitDatePresenter">
+<HBox id="VBox" fx:id="hbHabitDateView" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="40.0" minWidth="175.0" prefWidth="300.0" spacing="7.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.naoghuman.habitfx.view.habitdate.HabitDatePresenter">
     <children>
         <Region fx:id="rColorBar" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="10.0" />
-        <VBox id="VBox" maxHeight="-Infinity" minHeight="-Infinity" HBox.hgrow="ALWAYS">
-            <children>
-                <Label fx:id="lHabitDate" text="Date: %s" />
-                <HBox alignment="TOP_RIGHT" spacing="7.0">
-                    <children>
-                        <Button fx:id="bDone" mnemonicParsing="false" onAction="#onActionHabitDateIsDone" text="Done" />
-                        <Button fx:id="bFailed" mnemonicParsing="false" onAction="#onActionHabitDateIsFailed" text="Failed" />
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
+          <Label fx:id="lHabitDate" text="Date: %s" HBox.hgrow="NEVER" />
+      <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="bDone" mnemonicParsing="false" onAction="#onActionHabitDateIsDone" text="Done" HBox.hgrow="NEVER" />
+            <Button fx:id="bFailed" mnemonicParsing="false" onAction="#onActionHabitDateIsFailed" text="Failed" HBox.hgrow="NEVER" />
     </children>
     <padding>
         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
