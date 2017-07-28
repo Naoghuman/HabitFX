@@ -9,11 +9,13 @@ Intention
 `HabitFX` is a learning software which allowed the user to strengthen or weaken 
 his habits.
 
-Written with [NetBeans IDE] `HabitFX is a [JavaFX] &amp; [Maven] application.
+Written with [NetBeans IDE] `HabitFX` is a [JavaFX] &amp; [Maven] application.
 
-TODO One Screenshoot
+_Image:_ `HabitFX v0.1.0-SNAPSHOT`  
+![HabitFX_v0.1.0-SNAPSHOT_2017-07-28_11-22.png][HabitFX_v0.1.0-SNAPSHOT_2017-07-28_11-22]
 
 Current `version` is `X.Y.Z-PRERELEASE` (MM.dd.2017 / MM.dd.yyyy)
+
 
 
 Content
@@ -33,7 +35,7 @@ Content
 Examples<a name="Examples" />
 ---
 
-TODO Screenshoots, habits with different state, habitoverview
+TODO 
 
 
 
@@ -99,6 +101,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
+[HabitFX_v0.1.0-SNAPSHOT_2017-07-28_11-22]:https://user-images.githubusercontent.com/8161815/28711351-a425642a-7387-11e7-9e12-6b27aefe8b81.png
 
 
 
