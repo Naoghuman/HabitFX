@@ -16,10 +16,9 @@
  */
 package com.github.naoghuman.app.habitfx.sql;
 
-import com.github.naoghuman.app.habitfx.configuration.IModelConfiguration;
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
-import com.github.naoghuman.app.habitfx.entities.HabitDateState;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDateState;
 import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import java.util.Collections;
 import java.util.List;
@@ -27,15 +26,16 @@ import java.util.Objects;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationModel;
 
 /**
  *
  * @author Naoghuman
  */
-public final class DefaultHabitSqlService implements IModelConfiguration, HabitSqlService {
+public final class DefaultSqlServiceHabit implements ConfigurationModel, SqlServiceHabit {
 
     @Override
-    public void createHabit(final Habit habit) {
+    public void createHabit(final EntityHabit habit) {
         if (Objects.equals(habit.getId(), DEFAULT_ID__HABIT)) {
             habit.setId(System.nanoTime());
             DatabaseFacade.getDefault().getCrudService().create(habit);
@@ -46,11 +46,11 @@ public final class DefaultHabitSqlService implements IModelConfiguration, HabitS
     }
 
     @Override
-    public ObservableList<Habit> findAllHabits() {
-        final ObservableList<Habit> allHabits = FXCollections.observableArrayList();
-        final List<Habit> habits = DatabaseFacade.getDefault()
+    public ObservableList<EntityHabit> findAllHabits() {
+        final ObservableList<EntityHabit> allHabits = FXCollections.observableArrayList();
+        final List<EntityHabit> habits = DatabaseFacade.getDefault()
                 .getCrudService()
-                .findByNamedQuery(Habit.class, NAMED_QUERY__NAME__HABIT_FIND_ALL);
+                .findByNamedQuery(EntityHabit.class, NAMED_QUERY__NAME__HABIT_FIND_ALL);
         
         allHabits.addAll(habits);
         Collections.sort(allHabits);
@@ -59,28 +59,28 @@ public final class DefaultHabitSqlService implements IModelConfiguration, HabitS
     }
 
     @Override
-    public Optional<Habit> findHabit(final long habitId) {
-        final Habit habit = DatabaseFacade.getDefault()
+    public Optional<EntityHabit> findHabit(final long habitId) {
+        final EntityHabit habit = DatabaseFacade.getDefault()
                 .getCrudService()
-                .findById(Habit.class, habitId);
+                .findById(EntityHabit.class, habitId);
         
         return (habit != null) ? Optional.ofNullable(habit) : Optional.empty();
     }
     
-    private void update(final Habit habit) {
+    private void update(final EntityHabit habit) {
         DatabaseFacade.getDefault().getCrudService().update(habit);
     }
 
     @Override
-    public void updateHabit(final HabitDate habitDate) {
-        final Habit habit = DatabaseFacade.getDefault().getCrudService().findById(Habit.class, habitDate.getHabitId());
+    public void updateHabit(final EntityHabitDate habitDate) {
+        final EntityHabit habit = DatabaseFacade.getDefault().getCrudService().findById(EntityHabit.class, habitDate.getHabitId());
         habit.setCounterNotStarted(habit.getCounterNotStarted() - 1);
         
-        if (habitDate.getState().equals(HabitDateState.DONE)) {
+        if (habitDate.getState().equals(EntityHabitDateState.DONE)) {
             habit.setCounterDone(habit.getCounterDone() + 1);
         }
         
-        if (habitDate.getState().equals(HabitDateState.FAILED)) {
+        if (habitDate.getState().equals(EntityHabitDateState.FAILED)) {
             habit.setCounterFailed(habit.getCounterFailed() + 1);
         }
         

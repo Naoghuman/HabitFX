@@ -16,9 +16,9 @@
  */
 package com.github.naoghuman.app.habitfx.view.habitnavigation;
 
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
-import com.github.naoghuman.app.habitfx.entities.HabitState;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitState;
 import com.github.naoghuman.app.habitfx.sql.SqlProvider;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class HabitNavigationPresenter implements Initializable {
     @FXML private Label lTitle;
     @FXML private Region rColorBar;
     
-    private Habit habit;
+    private EntityHabit habit;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +64,7 @@ public class HabitNavigationPresenter implements Initializable {
         
     }
     
-    public void configure(Habit habit) {
+    public void configure(EntityHabit habit) {
         LoggerFacade.getDefault().debug(this.getClass(), "Configure"); // NOI18N
         
         this.habit = habit;
@@ -78,10 +78,10 @@ public class HabitNavigationPresenter implements Initializable {
         
         // Compute the background color
         Color backgroundColor = Color.LEMONCHIFFON;
-        if (habit.getState().equals(HabitState.ACTIVE)) {
+        if (habit.getState().equals(EntityHabitState.ACTIVE)) {
             backgroundColor = Color.LIGHTGREEN;
         }
-        else if (habit.getState().equals(HabitState.FINISHED)) {
+        else if (habit.getState().equals(EntityHabitState.FINISHED)) {
             backgroundColor = Color.LIGHTCORAL;
         }
         // Create the new color for the hole component
@@ -124,7 +124,7 @@ public class HabitNavigationPresenter implements Initializable {
         lHabitState.setTooltip(new Tooltip("habit-state"));// NOI18N
         
         final String habitDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
-        final Optional<HabitDate> result = SqlProvider.getDefault().findHabitDate(habit.getId(), habitDate);
+        final Optional<EntityHabitDate> result = SqlProvider.getDefault().findHabitDate(habit.getId(), habitDate);
         lCurrentDateState.setText(result.isPresent() ? result.get().getState().name() : "---");
         lCurrentDateState.setTooltip(result.isPresent() ? new Tooltip("current habitdate-state") : null);// NOI18N
     }

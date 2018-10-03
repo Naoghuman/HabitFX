@@ -16,9 +16,8 @@
  */
 package com.github.naoghuman.app.habitfx.sql;
 
-import com.github.naoghuman.app.habitfx.configuration.IModelConfiguration;
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
 import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import java.time.LocalDate;
 import java.time.Period;
@@ -29,22 +28,23 @@ import java.util.Map;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationModel;
 
 /**
  *
  * @author Naoghuman
  */
-public final class DefaultHabitDateSqlService implements IModelConfiguration, HabitDateSqlService {
+public final class DefaultSqlServiceHabitDate implements ConfigurationModel, SqlServiceHabitDate {
 
     @Override
-    public int createHabitDates(final Habit habit) {
+    public int createHabitDates(final EntityHabit habit) {
         final LocalDate startDate = habit.getStartDateAsLocalDate();
         final LocalDate endDate   = habit.getEndDateAsLocalDate();
         final Period period       = Period.between(startDate, endDate.plusDays(1));
         
         LocalDate dateToSave = startDate;
         for (int i = 0; i < period.getDays(); i++) {
-            final HabitDate habitDate = new HabitDate();
+            final EntityHabitDate habitDate = new EntityHabitDate();
             habitDate.setId(System.nanoTime());
             habitDate.setHabitId(habit.getId());
             habitDate.setHabitDateAsLocalDate(dateToSave);
@@ -58,15 +58,15 @@ public final class DefaultHabitDateSqlService implements IModelConfiguration, Ha
     }
 
     @Override
-    public ObservableList<HabitDate> findAllHabitDates(final Habit habit) {
-        final ObservableList<HabitDate> allHabitDates = FXCollections.observableArrayList();
+    public ObservableList<EntityHabitDate> findAllHabitDates(final EntityHabit habit) {
+        final ObservableList<EntityHabitDate> allHabitDates = FXCollections.observableArrayList();
         
         final Map<String, Object> parameters = new HashMap<>();
         parameters.put(COLUMN__HABIT__ID, habit.getId());
         
-        final List<HabitDate> habitDates = DatabaseFacade.getDefault()
+        final List<EntityHabitDate> habitDates = DatabaseFacade.getDefault()
                 .getCrudService()
-                .findByNamedQuery(HabitDate.class,
+                .findByNamedQuery(EntityHabitDate.class,
                         NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID,
                         parameters);
         
@@ -77,14 +77,14 @@ public final class DefaultHabitDateSqlService implements IModelConfiguration, Ha
     }
 
     @Override
-    public Optional<HabitDate> findHabitDate(final long habitId, final String habitDate) {
+    public Optional<EntityHabitDate> findHabitDate(final long habitId, final String habitDate) {
         final Map<String, Object> parameters = new HashMap<>();
         parameters.put(COLUMN__HABIT__ID,   habitId);
         parameters.put(COLUMN__HABIT__DATE, habitDate);
         
-        final List<HabitDate> habitDates = DatabaseFacade.getDefault()
+        final List<EntityHabitDate> habitDates = DatabaseFacade.getDefault()
                 .getCrudService()
-                .findByNamedQuery(HabitDate.class,
+                .findByNamedQuery(EntityHabitDate.class,
                         NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID_AND_DATE,
                         parameters);
         
@@ -92,7 +92,7 @@ public final class DefaultHabitDateSqlService implements IModelConfiguration, Ha
     }
 
     @Override
-    public void updateHabitDate(final HabitDate habitDate) {
+    public void updateHabitDate(final EntityHabitDate habitDate) {
         DatabaseFacade.getDefault().getCrudService().update(habitDate);
     }
     

@@ -16,10 +16,10 @@
  */
 package com.github.naoghuman.app.habitfx.view.habitoverview;
 
-import com.github.naoghuman.app.habitfx.configuration.IActionConfiguration;
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
-import com.github.naoghuman.app.habitfx.entities.HabitDateState;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationAction;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDateState;
 import com.github.naoghuman.app.habitfx.sql.SqlProvider;
 import com.github.naoghuman.app.habitfx.view.habitdate.HabitDatePresenter;
 import com.github.naoghuman.app.habitfx.view.habitdate.HabitDateView;
@@ -51,9 +51,9 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
     @FXML private VBox vbFailedHabits;
     @FXML private VBox vbNotStartedHabits;
     
-    private String dynamicActionId = IActionConfiguration.ON_ACTION__LOAD_HABITDATES;
+    private String dynamicActionId = ConfigurationAction.ON_ACTION__LOAD_HABITDATES;
     
-    private Habit habit;
+    private EntityHabit habit;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +61,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         
     }
     
-    public void configure(Habit habit) {
+    public void configure(EntityHabit habit) {
         LoggerFacade.getDefault().debug(this.getClass(), "Configure"); // NOI18N
         
         this.habit = habit;
@@ -74,7 +74,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         this.onActionRefreshHabitDates(refreshHabit);
     }
     
-    private void configureHabitDate(VBox vbox, HabitDate habitDate) {
+    private void configureHabitDate(VBox vbox, EntityHabitDate habitDate) {
         final HabitDateView view = new HabitDateView();
         final HabitDatePresenter presenter = view.getRealPresenter();
         presenter.configure(habitDate, dynamicActionId);
@@ -86,7 +86,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         LoggerFacade.getDefault().debug(this.getClass(), "On action load [HabitDate]s"); // NOI18N
         
         if (refreshHabit) {
-            final Optional<Habit> optional = SqlProvider.getDefault().findHabit(habit.getId());
+            final Optional<EntityHabit> optional = SqlProvider.getDefault().findHabit(habit.getId());
             if (optional.isPresent()) {
                 this.habit = optional.get();
             }
@@ -101,11 +101,11 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         lCounterNotStarted.setText(String.format("Not started: %d", habit.getCounterNotStarted())); // NOI18N
         
         // Show DONE elements
-        final ObservableList<HabitDate> habitDates = SqlProvider.getDefault().findAllHabitDates(habit);
+        final ObservableList<EntityHabitDate> habitDates = SqlProvider.getDefault().findAllHabitDates(habit);
         vbDoneHabits.getChildren().clear();
         habitDates.stream()
                 .filter(habitDate -> 
-                        habitDate.getState().equals(HabitDateState.DONE)
+                        habitDate.getState().equals(EntityHabitDateState.DONE)
                 )
                 .forEach(habitDate -> {
                     this.configureHabitDate(vbDoneHabits, habitDate);
@@ -115,7 +115,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         vbNotStartedHabits.getChildren().clear();
         habitDates.stream()
                 .filter(habitDate -> 
-                        habitDate.getState().equals(HabitDateState.NOT_STARTED)
+                        habitDate.getState().equals(EntityHabitDateState.NOT_STARTED)
                 )
                 .forEach(habitDate -> {
                     this.configureHabitDate(vbNotStartedHabits, habitDate);
@@ -125,7 +125,7 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         vbFailedHabits.getChildren().clear();
         habitDates.stream()
                 .filter(habitDate -> 
-                        habitDate.getState().equals(HabitDateState.FAILED)
+                        habitDate.getState().equals(EntityHabitDateState.FAILED)
                 )
                 .forEach(habitDate -> {
                     this.configureHabitDate(vbFailedHabits, habitDate);

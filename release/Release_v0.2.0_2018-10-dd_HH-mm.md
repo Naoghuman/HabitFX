@@ -28,6 +28,7 @@ TODO
 
 
 #### Refactoring
+#7 [convention] Add new naming convention to all classes and interfaces.
 #3 [package] Update package structure to reflect the new github application name.
 #2 [pom] update dependencies in pom.xml.
 

@@ -16,9 +16,8 @@
  */
 package com.github.naoghuman.app.habitfx.application;
 
-import com.github.naoghuman.app.habitfx.configuration.IActionConfiguration;
 import com.github.naoghuman.app.habitfx.dialog.DialogProvider;
-import com.github.naoghuman.app.habitfx.entities.Habit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
 import com.github.naoghuman.app.habitfx.sql.SqlProvider;
 import com.github.naoghuman.app.habitfx.view.habitnavigation.HabitNavigationPresenter;
 import com.github.naoghuman.app.habitfx.view.habitnavigation.HabitNavigationView;
@@ -38,15 +37,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationAction;
 
 /**
  *
  * @author Naoghuman
  */
-public class ApplicationPresenter implements Initializable, IActionConfiguration, RegisterActions {
+public class ApplicationPresenter implements Initializable, ConfigurationAction, RegisterActions {
     
     @FXML private BorderPane bpHabit;
-    @FXML private ListView<Habit> lvHabits;
+    @FXML private ListView<EntityHabit> lvHabits;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,9 +68,9 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
     private void initializeListView() {
         LoggerFacade.getDefault().info(this.getClass(), "Initialize ListView"); // NOI18N
         
-        final Callback callbackHabits = (Callback<ListView<Habit>, ListCell<Habit>>) (ListView<Habit> listView) -> new ListCell<Habit>() {
+        final Callback callbackHabits = (Callback<ListView<EntityHabit>, ListCell<EntityHabit>>) (ListView<EntityHabit> listView) -> new ListCell<EntityHabit>() {
             @Override
-            protected void updateItem(final Habit habit, final boolean empty) {
+            protected void updateItem(final EntityHabit habit, final boolean empty) {
                 super.updateItem(habit, empty);
                 
                 this.setText(null);
@@ -93,7 +93,7 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
                     && !lvHabits.getSelectionModel().isEmpty()
             ) {
                 // Open the Habit
-                final Habit habit = lvHabits.getSelectionModel().getSelectedItem();
+                final EntityHabit habit = lvHabits.getSelectionModel().getSelectedItem();
                 this.onActionShowHabitInOverview(habit);
             }
         });
@@ -105,7 +105,7 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
                     || keyCode.equals(KeyCode.TAB)
             ) {
                 // Open the Habit
-                final Habit habit = lvHabits.getSelectionModel().getSelectedItem();
+                final EntityHabit habit = lvHabits.getSelectionModel().getSelectedItem();
                 this.onActionShowHabitInOverview(habit);
             }
         });
@@ -127,11 +127,11 @@ public class ApplicationPresenter implements Initializable, IActionConfiguration
         
         lvHabits.getItems().clear();
         
-        final ObservableList<Habit> habits = SqlProvider.getDefault().findAllHabits();
+        final ObservableList<EntityHabit> habits = SqlProvider.getDefault().findAllHabits();
         lvHabits.getItems().addAll(habits);
     }
 
-    private void onActionShowHabitInOverview(Habit habit) {
+    private void onActionShowHabitInOverview(EntityHabit habit) {
         LoggerFacade.getDefault().debug(this.getClass(), "On action show [Habit] in [Overview]"); // NOI18N
 
         final HabitOverviewView view = new HabitOverviewView();

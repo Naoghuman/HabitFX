@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.app.habitfx.entities;
+package com.github.naoghuman.app.habitfx.entity;
 
-import com.github.naoghuman.app.habitfx.configuration.IModelConfiguration;
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -44,6 +43,7 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationModel;
 
 /**
  *
@@ -51,16 +51,16 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = IModelConfiguration.ENTITY__TABLE__HABITDATE)
+@Table(name = ConfigurationModel.ENTITY__TABLE__HABITDATE)
 @NamedQueries({
     @NamedQuery(
-            name = IModelConfiguration.NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID,
-            query = IModelConfiguration.NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID),
+            name = ConfigurationModel.NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID,
+            query = ConfigurationModel.NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID),
     @NamedQuery(
-            name = IModelConfiguration.NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID_AND_DATE,
-            query = IModelConfiguration.NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID_AND_DATE)
+            name = ConfigurationModel.NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID_AND_DATE,
+            query = ConfigurationModel.NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID_AND_DATE)
 })
-public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelConfiguration {
+public class EntityHabitDate implements Comparable<EntityHabitDate>, Externalizable, ConfigurationModel {
     
     // START  ID ---------------------------------------------------------------
     private LongProperty idProperty;
@@ -161,11 +161,11 @@ public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelC
     // END  HABITDATE ----------------------------------------------------------
     
     // START  HABITDATE-STATE --------------------------------------------------
-    private ObjectProperty<HabitDateState> stateProperty;
-    private HabitDateState _State = HabitDateState.NOT_STARTED;
+    private ObjectProperty<EntityHabitDateState> stateProperty;
+    private EntityHabitDateState _State = EntityHabitDateState.NOT_STARTED;
 
     @Column(name = COLUMN__HABIT__DATE_STATE)
-    public HabitDateState getState() {
+    public EntityHabitDateState getState() {
         if (stateProperty == null) {
             return _State;
         } else {
@@ -173,7 +173,7 @@ public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelC
         }
     }
 
-    public final void setState(HabitDateState state) {
+    public final void setState(EntityHabitDateState state) {
         if (stateProperty == null) {
             _State = state;
         } else {
@@ -212,7 +212,7 @@ public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelC
             return false;
         }
         
-        final HabitDate other = (HabitDate) obj;
+        final EntityHabitDate other = (EntityHabitDate) obj;
         
         return new EqualsBuilder()
                 .append(this.getId(),        other.getId())
@@ -222,7 +222,7 @@ public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelC
     }
     
     @Override
-    public int compareTo(HabitDate other) {
+    public int compareTo(EntityHabitDate other) {
         return new CompareToBuilder()
                 .append(this.getId(),        other.getId())
                 .append(this.getHabitId(),   other.getHabitId())
@@ -253,6 +253,6 @@ public class HabitDate implements Comparable<HabitDate>, Externalizable, IModelC
         this.setId(in.readLong());
         this.setHabitId(in.readLong());
         this.setHabitDate(String.valueOf(in.readObject()));
-        this.setState((HabitDateState) in.readObject());
+        this.setState((EntityHabitDateState) in.readObject());
     }
 }

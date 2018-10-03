@@ -19,7 +19,6 @@ package com.github.naoghuman.app.habitfx.application;
 import static javafx.application.Application.launch;
 
 import com.airhacks.afterburner.injection.Injector;
-import com.github.naoghuman.app.habitfx.configuration.IApplicationConfiguration;
 import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import com.github.naoghuman.lib.preferences.core.PreferencesFacade;
@@ -31,12 +30,13 @@ import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationApplication;
 
 /**
  *
  * @author Naoghuman
  */
-public class StartApplication extends Application implements IApplicationConfiguration {
+public class ApplicationStart extends Application implements ConfigurationApplication {
 
     public static void main(String[] args) {
         launch(args);

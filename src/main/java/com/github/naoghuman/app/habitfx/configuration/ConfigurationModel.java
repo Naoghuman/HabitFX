@@ -20,7 +20,7 @@ package com.github.naoghuman.app.habitfx.configuration;
  *
  * @author Naoghuman
  */
-public interface IModelConfiguration {
+public interface ConfigurationModel {
     
     public static final String COLUMN__GENERATION_TIME = "generationTime"; // NOI18N
     public static final String COLUMN__ID              = "id"; // NOI18N
@@ -40,18 +40,18 @@ public interface IModelConfiguration {
     public static final Long DEFAULT_ID__HABIT     = 1_000_000_000_000L;
     public static final Long DEFAULT_ID__HABITDATE = 1_000_000_000_100L;
     
-    public static final String ENTITY__TABLE__HABIT     = "Habit"; // NOI18N
-    public static final String ENTITY__TABLE__HABITDATE = "HabitDate"; // NOI18N
+    public static final String ENTITY__TABLE__HABIT     = "EntityHabit"; // NOI18N
+    public static final String ENTITY__TABLE__HABITDATE = "EntityHabitDate"; // NOI18N
     
-    public static final String NAMED_QUERY__NAME__HABIT_FIND_ALL            = "Habit.findAll"; // NOI18N
-    public static final String NAMED_QUERY__NAME__HABIT_FIND_BY_ID          = "Habit.findById"; // NOI18N
-    public static final String NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID = "HabitDate.findByHabitId"; // NOI18N
-    public static final String NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID_AND_DATE = "HabitDate.findByHabitIdAndDate"; // NOI18N
+    public static final String NAMED_QUERY__NAME__HABIT_FIND_ALL            = "EntityHabit.findAll"; // NOI18N
+    public static final String NAMED_QUERY__NAME__HABIT_FIND_BY_ID          = "EntityHabit.findById"; // NOI18N
+    public static final String NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID = "EntityHabitDate.findByHabitId"; // NOI18N
+    public static final String NAMED_QUERY__NAME__HABITDATE_FIND_BY_HABITID_AND_DATE = "EntityHabitDate.findByHabitIdAndDate"; // NOI18N
     
-    public static final String NAMED_QUERY__QUERY__HABIT_FIND_ALL            = "SELECT h FROM Habit h"; // NOI18N
-    public static final String NAMED_QUERY__QUERY__HABIT_FIND_BY_ID          = "SELECT h FROM Habit h  WHERE h.id = :id"; // NOI18N
-    public static final String NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID = "SELECT hd FROM HabitDate hd  WHERE hd.habitId = :habitId"; // NOI18N
-    public static final String NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID_AND_DATE  = "SELECT hd FROM HabitDate hd  WHERE hd.habitId = :habitId AND hd.habitDate = :habitDate"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__HABIT_FIND_ALL            = "SELECT eh FROM EntityHabit eh"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__HABIT_FIND_BY_ID          = "SELECT eh FROM EntityHabit eh  WHERE eh.id = :id"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID = "SELECT ehd FROM EntityHabitDate ehd  WHERE ehd.habitId = :habitId"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__HABITDATE_FIND_BY_HABITID_AND_DATE  = "SELECT ehd FROM EntityHabitDate ehd  WHERE ehd.habitId = :habitId AND ehd.habitDate = :habitDate"; // NOI18N
     
     public static final String SIGN__EMPTY = ""; // NOI18N
     

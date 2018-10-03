@@ -16,8 +16,8 @@
  */
 package com.github.naoghuman.app.habitfx.sql;
 
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
 import java.util.Optional;
 import javafx.collections.ObservableList;
 
@@ -25,14 +25,14 @@ import javafx.collections.ObservableList;
  *
  * @author Naoghuman
  */
-public interface HabitSqlService {
+public interface SqlServiceHabitDate {
 
-    void createHabit(final Habit habit);
+    public int createHabitDates(final EntityHabit habit);
 
-    ObservableList<Habit> findAllHabits();
+    public ObservableList<EntityHabitDate> findAllHabitDates(final EntityHabit habit);
 
-    Optional<Habit> findHabit(long habitId);
+    public Optional<EntityHabitDate> findHabitDate(final long habitId, final String habitDate);
 
-    void updateHabit(final HabitDate habitDate);
+    public void updateHabitDate(final EntityHabitDate habitDate);
     
 }

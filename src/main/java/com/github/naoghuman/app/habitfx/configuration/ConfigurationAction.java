@@ -20,8 +20,9 @@ package com.github.naoghuman.app.habitfx.configuration;
  *
  * @author Naoghuman
  */
-public interface IPropertiesConfiguration {
+public interface ConfigurationAction {
     
-    public static final String HABITWIZARD_LABEL_INFO_ENDDATE = "habitwizard.label.info.enddate"; // NOI18N
+    public static final String ON_ACTION__LOAD_HABITDATES    = "ON_ACTION__LOAD_HABITDATES_"; // NOI18N
+    public static final String ON_ACTION__REFRESH_NAVIGATION = "ON_ACTION__REFRESH_NAVIGATION"; // NOI18N
     
 }

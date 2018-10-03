@@ -22,7 +22,7 @@ import javafx.util.Duration;
  *
  * @author Naoghuman
  */
-public interface IApplicationConfiguration {
+public interface ConfigurationApplication {
     
     public static final Duration DURATION__125 = Duration.millis(125.0d);
     

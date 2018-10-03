@@ -16,9 +16,9 @@
  */
 package com.github.naoghuman.app.habitfx.view.habitdate;
 
-import static com.github.naoghuman.app.habitfx.configuration.IActionConfiguration.ON_ACTION__REFRESH_NAVIGATION;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
-import com.github.naoghuman.app.habitfx.entities.HabitDateState;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationAction;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDateState;
 import com.github.naoghuman.app.habitfx.sql.SqlProvider;
 import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
@@ -44,7 +44,7 @@ import javafx.scene.paint.Stop;
  *
  * @author Naoghuman
  */
-public class HabitDatePresenter implements Initializable {
+public class HabitDatePresenter implements Initializable, ConfigurationAction {
     
     @FXML private Button bDone;
     @FXML private Button bFailed;
@@ -52,7 +52,7 @@ public class HabitDatePresenter implements Initializable {
     @FXML private Region rColorBar;
     @FXML private HBox hbHabitDateView;
     
-    private HabitDate habitDate;
+    private EntityHabitDate habitDate;
     private String dynamicActionId;
 
     @Override
@@ -61,7 +61,7 @@ public class HabitDatePresenter implements Initializable {
         
     }
     
-    public void configure(final HabitDate habitDate, final String dynamicActionId) {
+    public void configure(final EntityHabitDate habitDate, final String dynamicActionId) {
         LoggerFacade.getDefault().debug(this.getClass(), "Configure HabitDate: " + habitDate.getHabitDate()); // NOI18N
         
         this.habitDate = habitDate;
@@ -76,10 +76,10 @@ public class HabitDatePresenter implements Initializable {
         
         // Compute the background color
         Color backgroundColor = Color.LEMONCHIFFON;
-        if (habitDate.getState().equals(HabitDateState.DONE)) {
+        if (habitDate.getState().equals(EntityHabitDateState.DONE)) {
             backgroundColor = Color.LIGHTGREEN;
         }
-        else if (habitDate.getState().equals(HabitDateState.FAILED)) {
+        else if (habitDate.getState().equals(EntityHabitDateState.FAILED)) {
             backgroundColor = Color.LIGHTCORAL;
         }
         // Create the new color for the hole component
@@ -110,7 +110,7 @@ public class HabitDatePresenter implements Initializable {
         
         // Buttons
         boolean habitDateViewIsDisabled = Boolean.TRUE;
-        if (habitDate.getState().equals(HabitDateState.NOT_STARTED)) {
+        if (habitDate.getState().equals(EntityHabitDateState.NOT_STARTED)) {
             habitDateViewIsDisabled = LocalDate.now().isBefore(habitDate.getHabitDateAsLocalDate());
         }
         
@@ -121,14 +121,14 @@ public class HabitDatePresenter implements Initializable {
         LoggerFacade.getDefault().debug(this.getClass(), String.format("On action [HabitDate=%s] is done!", // NOI18N
                 habitDate.getHabitDate()));
         
-        this.onActionUserClickHabitDate("-fx-background-color: AQUAMARINE;", HabitDateState.DONE); // NOI18N XXX
+        this.onActionUserClickHabitDate("-fx-background-color: AQUAMARINE;", EntityHabitDateState.DONE); // NOI18N XXX
     }
     
     public void onActionHabitDateIsFailed() {
         LoggerFacade.getDefault().debug(this.getClass(), String.format("On action [HabitDate=%s] is failed!", // NOI18N
                 habitDate.getHabitDate()));
         
-        this.onActionUserClickHabitDate("-fx-background-color: FIREBRICK;", HabitDateState.FAILED); // NOI18N XXX
+        this.onActionUserClickHabitDate("-fx-background-color: FIREBRICK;", EntityHabitDateState.FAILED); // NOI18N XXX
     }
     
     private void onActionConfigureButtons(final boolean isManagedAndVisible) {
@@ -140,7 +140,7 @@ public class HabitDatePresenter implements Initializable {
         bFailed.setVisible(isManagedAndVisible);
     }
     
-    private void onActionUserClickHabitDate(final String style, final HabitDateState state) {
+    private void onActionUserClickHabitDate(final String style, final EntityHabitDateState state) {
         LoggerFacade.getDefault().debug(this.getClass(), "On action user click [HabitDate]"); // NOI18N
         
         this.onActionConfigureButtons(Boolean.FALSE);

@@ -16,8 +16,8 @@
  */
 package com.github.naoghuman.app.habitfx.sql;
 
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitDate;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitDate;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.util.Optional;
 import javafx.collections.ObservableList;
@@ -27,7 +27,7 @@ import org.apache.commons.lang3.time.StopWatch;
  *
  * @author Naoghuman
  */
-public class SqlProvider implements HabitDateSqlService, HabitSqlService {
+public class SqlProvider implements SqlServiceHabitDate, SqlServiceHabit {
     
     private static final Optional<SqlProvider> INSTANCE = Optional.of(new SqlProvider());
 
@@ -35,8 +35,8 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
         return INSTANCE.get();
     }
     
-    private HabitDateSqlService habitDateSqlService;
-    private HabitSqlService habitSqlService;
+    private SqlServiceHabitDate sqlServiceHabitDate;
+    private SqlServiceHabit     sqlServiceHabit;
     
     private SqlProvider() {
         this.initialize();
@@ -45,26 +45,26 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     private void initialize() {
         LoggerFacade.getDefault().info(this.getClass(), "Initialize SqlProvider"); // NOI18N
         
-        habitSqlService = new DefaultHabitSqlService();
-        habitDateSqlService = new DefaultHabitDateSqlService();
+        sqlServiceHabit     = new DefaultSqlServiceHabit();
+        sqlServiceHabitDate = new DefaultSqlServiceHabitDate();
     }
     
     @Override
-    public void createHabit(final Habit habit) {
+    public void createHabit(final EntityHabit habit) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        habitSqlService.createHabit(habit);
+        sqlServiceHabit.createHabit(habit);
         
         this.print(stopWatch, 1, "createHabit(Habit)"); // NOI18N
     }
 
     @Override
-    public int createHabitDates(final Habit habit) {
+    public int createHabitDates(final EntityHabit habit) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        final int countEntities = habitDateSqlService.createHabitDates(habit);
+        final int countEntities = sqlServiceHabitDate.createHabitDates(habit);
         
         this.print(stopWatch, countEntities, "createHabitDates(Habit)"); // NOI18N
     
@@ -72,11 +72,11 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     }
     
     @Override
-    public ObservableList<HabitDate> findAllHabitDates(final Habit habit) {
+    public ObservableList<EntityHabitDate> findAllHabitDates(final EntityHabit habit) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        final ObservableList<HabitDate> habitDates = habitDateSqlService.findAllHabitDates(habit);
+        final ObservableList<EntityHabitDate> habitDates = sqlServiceHabitDate.findAllHabitDates(habit);
         
         this.print(stopWatch, habitDates.size(), "findAllHabitDates(Habit)"); // NOI18N
         
@@ -84,11 +84,11 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     }
 
     @Override
-    public ObservableList<Habit> findAllHabits() {
+    public ObservableList<EntityHabit> findAllHabits() {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        final ObservableList<Habit> habits = habitSqlService.findAllHabits();
+        final ObservableList<EntityHabit> habits = sqlServiceHabit.findAllHabits();
         
         this.print(stopWatch, habits.size(), "findAllHabits()"); // NOI18N
         
@@ -96,11 +96,11 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     }
 
     @Override
-    public Optional<Habit> findHabit(final long habitId) {
+    public Optional<EntityHabit> findHabit(final long habitId) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        final Optional<Habit> optional = habitSqlService.findHabit(habitId);
+        final Optional<EntityHabit> optional = sqlServiceHabit.findHabit(habitId);
         
         this.print(stopWatch, 1, "findHabit(long)"); // NOI18N
         
@@ -108,11 +108,11 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     }
     
     @Override
-    public Optional<HabitDate> findHabitDate(final long habitId, final String habitDate) {
+    public Optional<EntityHabitDate> findHabitDate(final long habitId, final String habitDate) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        final Optional<HabitDate> optional = habitDateSqlService.findHabitDate(habitId, habitDate);
+        final Optional<EntityHabitDate> optional = sqlServiceHabitDate.findHabitDate(habitId, habitDate);
         
         this.print(stopWatch, 1, "findHabitDate(long, String)"); // NOI18N
         
@@ -120,21 +120,21 @@ public class SqlProvider implements HabitDateSqlService, HabitSqlService {
     }
 
     @Override
-    public void updateHabit(final HabitDate habitDate) {
+    public void updateHabit(final EntityHabitDate habitDate) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        habitSqlService.updateHabit(habitDate);
+        sqlServiceHabit.updateHabit(habitDate);
         
         this.print(stopWatch, 1, "updateHabit(HabitDate)"); // NOI18N
     }
 
     @Override
-    public void updateHabitDate(final HabitDate habitDate) {
+    public void updateHabitDate(final EntityHabitDate habitDate) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
-        habitDateSqlService.updateHabitDate(habitDate);
+        sqlServiceHabitDate.updateHabitDate(habitDate);
         
         this.print(stopWatch, 1, "updateHabitDate(HabitDate)"); // NOI18N
     }

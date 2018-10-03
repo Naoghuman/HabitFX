@@ -16,10 +16,9 @@
  */
 package com.github.naoghuman.app.habitfx.dialog;
 
-import com.github.naoghuman.app.habitfx.configuration.IActionConfiguration;
 import com.github.naoghuman.app.habitfx.dialog.habitwizard.HabitWizardPresenter;
 import com.github.naoghuman.app.habitfx.dialog.habitwizard.HabitWizardView;
-import com.github.naoghuman.app.habitfx.entities.Habit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
 import com.github.naoghuman.app.habitfx.sql.SqlProvider;
 import com.github.naoghuman.lib.action.core.ActionHandlerFacade;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
@@ -28,12 +27,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationAction;
 
 /**
  *
  * @author Naoghuman
  */
-public final class DialogProvider implements IActionConfiguration {
+public final class DialogProvider implements ConfigurationAction {
     
     private static final Optional<DialogProvider> INSTANCE = Optional.of(new DialogProvider());
 
@@ -68,7 +68,7 @@ public final class DialogProvider implements IActionConfiguration {
                             response == ButtonType.OK
                             && presenter.isValid()
                     ) {
-                        final Habit habit = presenter.getHabit();
+                        final EntityHabit habit = presenter.getHabit();
                         SqlProvider.getDefault().createHabit(habit);
                         SqlProvider.getDefault().createHabitDates(habit);
                         

@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.app.habitfx.entities;
+package com.github.naoghuman.app.habitfx.entity;
 
-import com.github.naoghuman.app.habitfx.configuration.IModelConfiguration;
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -46,6 +45,7 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationModel;
 
 /**
  *
@@ -53,16 +53,16 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = IModelConfiguration.ENTITY__TABLE__HABIT)
+@Table(name = ConfigurationModel.ENTITY__TABLE__HABIT)
 @NamedQueries({
     @NamedQuery(
-            name  = IModelConfiguration.NAMED_QUERY__NAME__HABIT_FIND_ALL,
-            query = IModelConfiguration.NAMED_QUERY__QUERY__HABIT_FIND_ALL),
+            name  = ConfigurationModel.NAMED_QUERY__NAME__HABIT_FIND_ALL,
+            query = ConfigurationModel.NAMED_QUERY__QUERY__HABIT_FIND_ALL),
     @NamedQuery(
-            name  = IModelConfiguration.NAMED_QUERY__NAME__HABIT_FIND_BY_ID,
-            query = IModelConfiguration.NAMED_QUERY__QUERY__HABIT_FIND_BY_ID)
+            name  = ConfigurationModel.NAMED_QUERY__NAME__HABIT_FIND_BY_ID,
+            query = ConfigurationModel.NAMED_QUERY__QUERY__HABIT_FIND_BY_ID)
 })
-public class Habit implements Comparable<Habit>, Externalizable, IModelConfiguration {
+public class EntityHabit implements Comparable<EntityHabit>, Externalizable, ConfigurationModel {
     
     // START  ID ---------------------------------------------------------------
     private LongProperty idProperty;
@@ -230,11 +230,11 @@ public class Habit implements Comparable<Habit>, Externalizable, IModelConfigura
     // END  END-DATE -----------------------------------------------------------
     
     // START  HABIT-STATE ------------------------------------------------------
-    private ObjectProperty<HabitState> stateProperty;
-    private HabitState _state = HabitState.NOT_STARTED;
+    private ObjectProperty<EntityHabitState> stateProperty;
+    private EntityHabitState _state = EntityHabitState.NOT_STARTED;
 
     @Column(name = COLUMN__HABIT__STATE)
-    public HabitState getState() {
+    public EntityHabitState getState() {
         if (stateProperty == null) {
             return _state;
         } else {
@@ -242,7 +242,7 @@ public class Habit implements Comparable<Habit>, Externalizable, IModelConfigura
         }
     }
 
-    public final void setState(HabitState state) {
+    public final void setState(EntityHabitState state) {
         if (stateProperty == null) {
             _state = state;
         } else {
@@ -396,7 +396,7 @@ public class Habit implements Comparable<Habit>, Externalizable, IModelConfigura
             return false;
         }
         
-        final Habit other = (Habit) obj;
+        final EntityHabit other = (EntityHabit) obj;
         
         return new EqualsBuilder()
                 .append(this.getId(),    other.getId())
@@ -405,7 +405,7 @@ public class Habit implements Comparable<Habit>, Externalizable, IModelConfigura
     }
     
     @Override
-    public int compareTo(Habit other) {
+    public int compareTo(EntityHabit other) {
         return new CompareToBuilder()
                 .append(this.getTitle(), other.getTitle())
                 .append(this.getId(),    other.getId())
@@ -449,7 +449,7 @@ public class Habit implements Comparable<Habit>, Externalizable, IModelConfigura
         this.setTitle(String.valueOf(in.readObject()));
         this.setStartDate(String.valueOf(in.readObject()));
         this.setEndDate(String.valueOf(in.readObject()));
-        this.setState((HabitState) in.readObject());
+        this.setState((EntityHabitState) in.readObject());
         this.setPeriod(in.readInt());
         this.setCounterDone(in.readInt());
         this.setCounterFailed(in.readInt());

@@ -16,10 +16,8 @@
  */
 package com.github.naoghuman.app.habitfx.dialog.habitwizard;
 
-import com.github.naoghuman.app.habitfx.configuration.IActionConfiguration;
-import com.github.naoghuman.app.habitfx.configuration.IPropertiesConfiguration;
-import com.github.naoghuman.app.habitfx.entities.Habit;
-import com.github.naoghuman.app.habitfx.entities.HabitState;
+import com.github.naoghuman.app.habitfx.entity.EntityHabit;
+import com.github.naoghuman.app.habitfx.entity.EntityHabitState;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.net.URL;
 import java.time.LocalDate;
@@ -32,12 +30,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationAction;
+import com.github.naoghuman.app.habitfx.configuration.ConfigurationProperties;
 
 /**
  *
  * @author Naoghuman
  */
-public class HabitWizardPresenter implements Initializable, IActionConfiguration, IPropertiesConfiguration {
+public class HabitWizardPresenter implements Initializable, ConfigurationAction, ConfigurationProperties {
     
     @FXML private DatePicker dpStartDate;
     @FXML private Label lInfoEndDate;
@@ -105,19 +105,19 @@ public class HabitWizardPresenter implements Initializable, IActionConfiguration
                 });
     }
     
-    public Habit getHabit() {
+    public EntityHabit getHabit() {
         LoggerFacade.getDefault().debug(this.getClass(), "Get [Habit]"); // NOI18N
         
-        final Habit habit = new Habit();
+        final EntityHabit habit = new EntityHabit();
         habit.setTitle(tfHabitTitle.getText().trim());
         habit.setCounterDone(0);
         habit.setCounterFailed(0);
         habit.setStartDateAsLocalDate(dpStartDate.getValue());
         habit.setEndDateAsLocalDate(habit.getStartDateAsLocalDate().plusWeeks(3).minusDays(1));
         
-        HabitState habitState = HabitState.ACTIVE;
+        EntityHabitState habitState = EntityHabitState.ACTIVE;
         if (habit.getStartDateAsLocalDate().isAfter(LocalDate.now())) {
-            habitState = HabitState.NOT_STARTED;
+            habitState = EntityHabitState.NOT_STARTED;
         }
         habit.setState(habitState);
         

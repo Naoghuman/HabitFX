@@ -14,16 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.app.habitfx.entities;
+package com.github.naoghuman.app.habitfx.configuration;
 
 /**
  *
  * @author Naoghuman
  */
-public enum HabitState {
+public interface ConfigurationProperties {
     
-    ACTIVE,
-    FINISHED,
-    NOT_STARTED;
+    public static final String HABITWIZARD_LABEL_INFO_ENDDATE = "habitwizard.label.info.enddate"; // NOI18N
     
 }

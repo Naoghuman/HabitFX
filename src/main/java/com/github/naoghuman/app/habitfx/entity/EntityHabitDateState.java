@@ -14,15 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.app.habitfx.configuration;
+package com.github.naoghuman.app.habitfx.entity;
 
 /**
  *
  * @author Naoghuman
  */
-public interface IActionConfiguration {
+public enum EntityHabitDateState {
     
-    public static final String ON_ACTION__LOAD_HABITDATES    = "ON_ACTION__LOAD_HABITDATES_"; // NOI18N
-    public static final String ON_ACTION__REFRESH_NAVIGATION = "ON_ACTION__REFRESH_NAVIGATION"; // NOI18N
+    DONE,
+    FAILED,
+    NOT_STARTED;
     
 }
