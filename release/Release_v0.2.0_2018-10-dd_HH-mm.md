@@ -28,6 +28,7 @@ TODO
 
 
 #### Refactoring
+#3 [package] Update package structure to reflect the new github application name.
 #2 [pom] update dependencies in pom.xml.
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="VBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.naoghuman.app.habitfx.view.habitoverview.HabitOverviewPresenter">
+    <children>
+        <Label fx:id="lHabitTitle" text="&lt;title&gt;" />
+        <SplitPane dividerPositions="0.33, 0.66" VBox.vgrow="ALWAYS">
+            <items>
+            <VBox>
+               <children>
+                  <Label fx:id="lCounterDone" text="&lt;done&gt;" />
+                      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                          <content>
+                              <VBox fx:id="vbDoneHabits" spacing="7.0" />
+                          </content>
+                      </ScrollPane>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label fx:id="lCounterNotStarted" text="&lt;not started&gt;" />
+                      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                          <content>
+                              <VBox fx:id="vbNotStartedHabits" spacing="7.0" />
+                          </content>
+                      </ScrollPane>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label fx:id="lCounterFailed" text="&lt;failed&gt;" />
+                      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                          <content>
+                              <VBox fx:id="vbFailedHabits" spacing="7.0" />
+                          </content>
+                      </ScrollPane>
+               </children>
+            </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</VBox>
