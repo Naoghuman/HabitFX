@@ -3,13 +3,39 @@
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.naoghuman</groupId>
-    <artifactId>habitfx</artifactId>
+    <artifactId>app-habitfx</artifactId>
     <version>0.2.0-SNAPSHOT</version> <!-- -SNAPSHOT -PRERELEASE -->
     <packaging>jar</packaging>
-    <name>HabitFX</name>
+    <name>App-HabitFX</name>
+    
     <description>`HabitFX` is a learning software which allowed the user to strengthen or weaken his habits.
 
 HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</description>
+    
+    <developers>
+        <developer>
+            <email>peter.rogge@yahoo.de</email>
+            <id>Naoghuman</id>
+            <name>Peter Rogge</name>
+            <timezone>+1</timezone>
+            <url>https://github.com/Naoghuman/app-habitfx.git</url>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The GNU General Public License, Version 3.0</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+            <comments>The GNU General Public License is a free, copyleft license for software and other kinds of works.</comments>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:ssh://github.com:Naoghuman/app-habitfx.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Naoghuman/app-habitfx.git</developerConnection>
+        <url>https://github.com/Naoghuman/app-habitfx.git</url>
+    </scm>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,29 +68,43 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <!--
                 Hint:
-                 - Add here the suffixes from the files with should be included into the jar file.
+                 - Add here the suffixes from the files with should be included 
+                   into the jar file.
             -->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.fxml</include>
-                    <include>**/*.xml</include>
                     <include>**/*.css</include>
+                    <include>**/*.fxml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.png</include>
                     <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>**/*.fxml</include>
-                    <include>**/*.xml</include>
                     <include>**/*.css</include>
+                    <include>**/*.fxml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.png</include>
                     <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
             </resource>
         </resources>
@@ -100,6 +140,12 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-properties</artifactId>
             <version>0.5.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.github.naoghuman</groupId>
+            <artifactId>lib-validation</artifactId>
+            <version>0.2.0</version>
             <type>jar</type>
         </dependency>
         

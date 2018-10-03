@@ -19,6 +19,7 @@ TODO
 
 
 #### Enhancement
+#4 [pom] Extends the sections in pom.xml.
 
 
 
