@@ -27,6 +27,7 @@ TODO
 
 
 #### Refactoring
+#2 [pom] update dependencies in pom.xml.
 
 
 

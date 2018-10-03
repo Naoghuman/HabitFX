@@ -75,31 +75,31 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-action</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-database-objectdb</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-logger</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-preferences</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-properties</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1</version>
             <type>jar</type>
         </dependency>
         
@@ -112,7 +112,7 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.6</version>
+            <version>3.8</version>
             <type>jar</type>
         </dependency>
         
