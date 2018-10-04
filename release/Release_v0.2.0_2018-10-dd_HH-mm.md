@@ -1,6 +1,7 @@
 Welcome to `HabitFX` with the new release `v0.2.0-PRERELEASE`.
 
-TODO
+`HabitFX` is a learning software which allowed the user to strengthen or weaken his habits.
+HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.
 
 
 
@@ -15,6 +16,7 @@ TODO
 
 
 #### Feature
+#5 [stability] Add connection from the application to Travic CI.
 
 
 
@@ -48,4 +50,7 @@ Naoghuman
 
 
 [//]: # (Links)
+[JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
+[Maven]:http://maven.apache.org/
+[NetBeans IDE]:https://netbeans.org/
 
