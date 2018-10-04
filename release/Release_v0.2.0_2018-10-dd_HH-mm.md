@@ -16,6 +16,7 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.
 
 
 #### Feature
+#6 [stability] Add bagdes from img.shield.io to the ReadMe.md.
 #5 [stability] Add connection from the application to Travic CI.
 
 
