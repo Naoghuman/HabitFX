@@ -37,6 +37,11 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
         <url>https://github.com/Naoghuman/app-habitfx.git</url>
     </scm>
     
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.org/Naoghuman/app-habitfx</url>
+    </ciManagement>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -111,23 +116,31 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.</de
         <finalName>${project.artifactId}-${project.version}</finalName>
     </build>
     
+    <repositories>
+        <repository>
+            <id>objectdb</id>
+            <name>ObjectDB Repository</name>
+            <url>http://m2.objectdb.com</url>
+        </repository>
+    </repositories>
+    
     <dependencies>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-action</artifactId>
-            <version>0.5.1</version>
+            <version>0.6.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-database-objectdb</artifactId>
-            <version>0.5.1</version>
+            <version>0.6.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
             <artifactId>lib-logger</artifactId>
-            <version>0.5.1</version>
+            <version>0.6.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
