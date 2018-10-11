@@ -111,8 +111,8 @@ public class HabitNavigationPresenter implements Initializable {
         lTitle.setText(habit.getTitle());
         lTitle.setTooltip(new Tooltip("title"));// NOI18N
         
-        lCurrentHabitCounters.setText(String.format("(%s, %s, %s)", habit.getCounterDone(), habit.getCounterNotStarted(), habit.getCounterFailed()));
-        lCurrentHabitCounters.setTooltip(new Tooltip("(done, not started, failed)"));// NOI18N
+        lCurrentHabitCounters.setText(String.format("(%s / %s / %s)", habit.getCounterNotStarted(), habit.getCounterDone(), habit.getCounterFailed())); // NOI18N
+        lCurrentHabitCounters.setTooltip(new Tooltip("(not started / done / failed)"));// NOI18N
         
         lStartDate.setText(String.format("%s", habit.getStartDate())); // NOI18N
         lStartDate.setTooltip(new Tooltip("startdate"));// NOI18N

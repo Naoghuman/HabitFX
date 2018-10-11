@@ -96,22 +96,12 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
         lHabitTitle.setText("Title: " + habit.getTitle()); // NOI18N
         
         // Show info in Counters
+        lCounterNotStarted.setText(String.format("Not started: %d", habit.getCounterNotStarted())); // NOI18N
         lCounterDone      .setText(String.format("Done: %d",        habit.getCounterDone()));       // NOI18N
         lCounterFailed    .setText(String.format("Failed: %d",      habit.getCounterFailed()));     // NOI18N
-        lCounterNotStarted.setText(String.format("Not started: %d", habit.getCounterNotStarted())); // NOI18N
-        
-        // Show DONE elements
-        final ObservableList<EntityHabitDate> habitDates = SqlProvider.getDefault().findAllHabitDates(habit);
-        vbDoneHabits.getChildren().clear();
-        habitDates.stream()
-                .filter(habitDate -> 
-                        habitDate.getState().equals(EntityHabitDateState.DONE)
-                )
-                .forEach(habitDate -> {
-                    this.configureHabitDate(vbDoneHabits, habitDate);
-                });
         
         // Show NOT_STARTED elements
+        final ObservableList<EntityHabitDate> habitDates = SqlProvider.getDefault().findAllHabitDates(habit);
         vbNotStartedHabits.getChildren().clear();
         habitDates.stream()
                 .filter(habitDate -> 
@@ -119,6 +109,16 @@ public class HabitOverviewPresenter implements Initializable, RegisterActions {
                 )
                 .forEach(habitDate -> {
                     this.configureHabitDate(vbNotStartedHabits, habitDate);
+                });
+        
+        // Show DONE elements
+        vbDoneHabits.getChildren().clear();
+        habitDates.stream()
+                .filter(habitDate -> 
+                        habitDate.getState().equals(EntityHabitDateState.DONE)
+                )
+                .forEach(habitDate -> {
+                    this.configureHabitDate(vbDoneHabits, habitDate);
                 });
         
         // Show FAILED elements

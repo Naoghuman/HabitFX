@@ -20,6 +20,7 @@ HabitFX, written in [NetBeans IDE], is a [JavaFX] &amp; [Maven] application.
 
 
 #### Enhancement
+#9 [gui] Move `not started` section to the left.
 
 
 
